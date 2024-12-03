@@ -1,6 +1,8 @@
 body {
-    background: linear-gradient(to left, #000080, #001f3f, #003f80, #005f80, #007fbf, #770377);
+    background-image: url();
     margin: 0;
     font-family: Arial, sans-serif;
+    min-height: 100vh; /* Устанавливаем минимальную высоту равную высоте окна браузера */
+    display: flex; /* Используем Flexbox для центрирования содержимого */
+    flex-direction: column;
 }
-

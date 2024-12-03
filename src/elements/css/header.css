@@ -1,66 +1,56 @@
-/* Шапка сайта */
 .header {
     display: flex;
-    flex-direction: column; /* Переключаемся на столбец для мобильных устройств */
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    padding: 10px 20px; /* Уменьшаем внутренний отступ для мобильных */
+    padding: 10px;
     background-color: rgba(0, 0, 0, 0.5);
+    position: fixed; /* Фиксируем шапку */
+    top: 0; /* Привязываем шапку к верхней части экрана */
+    width: 99%; /* Устанавливаем ширину шапки на 100% экрана */
+    z-index: 1000;
 }
-
 .header button .icon {
-    width: 20px;
-    height: 20px;
-    margin-right: 10px;
+    width: 20px; height: 20px; margin-right: 10px
 }
-
-.header button {
-    background-color: #7289da;
-    border: none;
-    border-radius: 5px;
-    color: white;
-    padding: 10px 20px;
-    font-size: 16px;
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-    position: relative;
+.header button { background-color: #7289da; 
+    border: none; 
+    border-radius: 5px; 
+    color: white; 
+    padding: 10px 20px; 
+    font-size: 16px; 
+    display: flex; 
+    align-items: center; 
+    cursor: pointer; 
+    position: relative; 
     overflow: hidden;
-    transition: all 0.3s ease;
-    box-shadow: 0 0 10px #7289da, 0 0 20px #7289da, 0 0 30px #7289da;
-    margin-bottom: 10px; /* Добавляем нижний отступ для мобильных */
+    transition: all 0.3s ease; 
+    box-shadow: 0 0 10px #7289da, 0 0 20px #7289da, 0 0 30px #7289da; }
+.header button::before{
+    content: ''; 
+    position: absolute; 
+    top: -50%; 
+    left: -50%; 
+    width: 200%; 
+    height: 200%; 
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.2), transparent 70%); 
+    transition: transform 0.5s ease; 
+    z-index: 0
 }
-
-.header button::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: radial-gradient(circle, rgba(255, 255, 255, 0.2), transparent 70%);
-    transition: transform 0.5s ease;
-    z-index: 0;
-}
-
 .header button:hover::before {
     transform: scale(1.5);
 }
-
 .header button:focus {
     outline: none;
 }
-
 .header button:hover {
+    /* box-shadow: 0 0 20px #7289da, 0 0 30px #7289da, 0 0 40px #7289da; */
     animation: rainbowGlow 1.5s infinite;
-    background-color: #5b6eae;
+    background-color: #5b6eae
 }
-
 .header button:active {
     box-shadow: 0 0 5px #7289da, 0 0 10px #7289da, 0 0 15px #7289da;
-    background-color: #4a5a86;
+    background-color: #4a5a86
 }
-
 @keyframes rainbowGlow {
     0% { box-shadow: 0 0 10px #FF0000, 0 0 20px #FF7F00, 0 0 30px #FFFF00, 0 0 40px #00FF00, 0 0 50px #0000FF, 0 0 60px #4B0082, 0 0 70px #8B00FF; }
     16.67% { box-shadow: 0 0 10px #FF7F00, 0 0 20px #FFFF00, 0 0 30px #00FF00, 0 0 40px #0000FF, 0 0 50px #4B0082, 0 0 60px #8B00FF, 0 0 70px #FF0000; }
@@ -70,17 +60,15 @@
     83.33% { box-shadow: 0 0 10px #4B0082, 0 0 20px #8B00FF, 0 0 30px #FF0000, 0 0 40px #FF7F00, 0 0 50px #FFFF00, 0 0 60px #00FF00, 0 0 70px #0000FF; }
     100% { box-shadow: 0 0 10px #8B00FF, 0 0 20px #FF0000, 0 0 30px #FF7F00, 0 0 40px #FFFF00, 0 0 50px #00FF00, 0 0 60px #0000FF, 0 0 70px #4B0082; }
 }
-
 .header ul {
     list-style: none;
     display: flex;
-    flex-direction: column; /* Переключаемся на столбец для мобильных */
     margin: 0;
     padding: 0;
 }
 
 .header ul li {
-    margin: 5px 0; /* Уменьшаем отступы для мобильных */
+    margin: 0 9px;
     position: relative;
 }
 
@@ -93,23 +81,171 @@
 }
 
 .header ul li a:hover {
-    background-color: rgba(255, 69, 0, 0.7); /* Оранжевый цвет с прозрачностью */
-    box-shadow: 0 0 15px rgba(255, 69, 0, 1); /* Тень, имитирующая свечение */
+    background-color: rgba(255, 255, 255, 0.2);
+    background-color: rgba(255, 69, 0, 0.7); /* Оранжевый цвет с прозрачностью */ 
+    box-shadow: 0 0 15px rgba(255, 69, 0, 1); /* Тень, имитирующая свечение */ 
     transition: all 0.3s ease;
 }
-
-/* Медиазапрос для больших экранов */
-@media (min-width: 600px) {
+@media (max-width: 767px) {
     .header {
-        flex-direction: row;
-        justify-content: space-between;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 12px;
+        background-color: rgba(0, 0, 0, 0.5);
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 1000;
     }
-
+    
+    .login .icon {
+        width: 20px;
+        height: 20px;
+        margin-right: 10px;
+    }
+    
+    .buttons {
+        display: flex;
+        justify-content: space-between; /* Добавлено это правило */
+        width: 100%;
+    }
+    
+    .buttons .login {
+        margin-left: auto;
+        margin-right: 25px; /* Увеличьте это значение по вашему усмотрению */
+    }
+    
+     .buttons .login {
+      background-color: #7289da;
+      border: none;
+      border-radius: 5px;
+      color: white;
+      padding: 9px 10px;
+      font-size: 16px;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 10px #7289da, 0 0 20px #7289da, 0 0 30px #7289da;
+    }
+    .buttons .login::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.2), transparent 70%);
+      transition: transform 0.5s ease;
+      z-index: 0;
+    }
+    .buttons .login:hover::before {
+      transform: scale(1.5);
+    }
+    .buttons .login:focus {
+      outline: none;
+    }
+    .buttons .login:hover {
+      animation: rainbowGlow 1.5s infinite;
+      background-color: #5b6eae;
+    }
+    .buttons .login:active {
+      box-shadow: 0 0 5px #7289da, 0 0 10px #7289da, 0 0 15px #7289da;
+      background-color: #4a5a86;
+    }
     .header ul {
-        flex-direction: row;
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      margin: 0;
+      padding: 0;
     }
-
     .header ul li {
-        margin: 0 10px;
+      margin: 0 0 10px 0;
+      position: relative;
     }
-}
+    .header ul li a {
+      color: white;
+      text-decoration: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      transition: background-color 0.3s;
+    }
+    .header ul li a:hover {
+      background-color: rgba(255, 69, 0, 0.7);
+      box-shadow: 0 0 15px rgba(255, 69, 0, 1);
+      transition: all 0.3s ease;
+    }
+    .side-menu {
+        height: 100%;
+        width: 0;
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        background-color: #333; /* Изменение цвета фона */
+        color: white; /* Цвет текста */
+        overflow-x: hidden;
+        transition: width 0.3s ease, transform 0.3s ease;
+        transform: translateX(-100%);
+        padding-top: 60px;
+        text-align: left;
+        box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+        display: flex;
+        flex-direction: column; /* Добавлено для вертикального размещения элементов */
+        gap: 10px; /* Добавлено для расстояния между элементами */
+      }
+      
+      .side-menu.open {
+        transform: translateX(0);
+        width: 300px; /* Изменение ширины */
+      }
+      
+      .side-menu a {
+        padding: 10px 15px; /* Увеличение отступов */
+        text-decoration: none;
+        font-size: 20px; /* Увеличение шрифта */
+        color: #f1f1f1; /* Цвет текста */
+        display: block;
+        transition: color 0.3s ease, padding-left 0.3s ease;
+      }
+      
+      .side-menu a:hover {
+        color: #ff9800; /* Цвет текста при наведении */
+        padding-left: 20px;
+      }
+      
+      .side-menu .closebtn {
+        position: absolute;
+        top: 0;
+        right: 25px;
+        font-size: 36px;
+        margin-left: 50px;
+      }
+      
+      
+      body .side-menu.open {
+        overflow: hidden; /* Блокируем прокрутку основного контента при открытом меню */
+      }
+      
+      .menu-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 0;
+        transition: opacity 0.3s ease;
+        opacity: 0;
+      }
+      .menu-overlay.open {
+        opacity: 1;
+        z-index: 999; /* выше, чем боковое меню */
+      }   
+  }
+  
+  
